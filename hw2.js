@@ -20,8 +20,24 @@ let blockchain = [
   { fromUser: "jeff", toUser: "ben", amount: 1750 }
 ]
 
-// Write a function that, when given a username (i.e. brian, ben, or jeff),
-// returns the number of KelloggCoin that user has in their KelloggCoin "wallet".
+function getBalance(name) {
+  var account = {
+    "brian": 0,
+    "ben": 0,
+    "jeff": 0,
+};
+
+for (i = 0; i < blockchain.length; i++) {
+  if (blockchain[i].fromUser!=null){
+    account[blockchain[i].fromUser] = account[blockchain[i].fromUser] - blockchain[i].amount;
+  }
+   account[blockchain[i].toUser] = account[blockchain[i].toUser] + blockchain[i].amount;
+}
+
+
+return account[name];
+
+}
 
 // HINT! You will have to use all the JavaScript programming fundamentals we've
 // learned about so far, i.e. variables, arrays, objects, conditionals, loops,
